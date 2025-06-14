@@ -11,7 +11,7 @@ import homepageRouter from "./routes/homepage.routes";
 dotenv.config();
 
 const app: Express = express();
-const port = 3000;
+const port = 3001;
 
 // Configure session options
 const sessionOptions: session.SessionOptions = {
@@ -27,7 +27,9 @@ app.use(session(sessionOptions));
 
 // Register routes
 app.use("/", homepageRouter);
+
 // Start the server
-app.listen(port, () => {
+const dockerLocalhost = "0.0.0.0";
+app.listen(port, dockerLocalhost, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
